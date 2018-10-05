@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "file_parts")
-public class FileParts extends BaseModel{
+public class FilePart extends BaseModel{
     @Id
     @GeneratedValue
     @Column(name = "part_id")
