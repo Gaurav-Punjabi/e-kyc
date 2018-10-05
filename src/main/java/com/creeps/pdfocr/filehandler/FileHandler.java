@@ -30,7 +30,11 @@ public class FileHandler {
             File tempFile = new File(tempDir.getAbsolutePath()+File.separator+file.getOriginalFilename());
 
             BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(tempFile));
-            bout.write(file.getBytes());
+            byte dataBytes[] = file.getBytes();
+            /*if(!is_pdf(dataBytes))
+                return false;
+            */
+            bout.write(dataBytes);
             bout.close();
             logger.log(TAG,tempDir.getAbsolutePath());
             logger.log(TAG, "WROTE to file");
@@ -43,5 +47,42 @@ public class FileHandler {
 
         return false;
 
+    }
+
+    /**
+     * Test if the data in the given byte array represents a PDF file.
+     */
+    public static boolean is_pdf(byte[] data) {
+        if (data != null && data.length > 4 &&
+                data[0] == 0x25 && // %
+                data[1] == 0x50 && // P
+                data[2] == 0x44 && // D
+                data[3] == 0x46 && // F
+                data[4] == 0x2D) { // -
+
+            // version 1.3 file terminator
+            if (data[5] == 0x31 && data[6] == 0x2E && data[7] == 0x33 &&
+                    data[data.length - 7] == 0x25 && // %
+                    data[data.length - 6] == 0x25 && // %
+                    data[data.length - 5] == 0x45 && // E
+                    data[data.length - 4] == 0x4F && // O
+                    data[data.length - 3] == 0x46 && // F
+                    data[data.length - 2] == 0x20 && // SPACE
+                    data[data.length - 1] == 0x0A) { // EOL
+                return true;
+            }
+
+            // version 1.3 file terminator
+            if (data[5] == 0x31 && data[6] == 0x2E && data[7] == 0x34 &&
+                    data[data.length - 6] == 0x25 && // %
+                    data[data.length - 5] == 0x25 && // %
+                    data[data.length - 4] == 0x45 && // E
+                    data[data.length - 3] == 0x4F && // O
+                    data[data.length - 2] == 0x46 && // F
+                    data[data.length - 1] == 0x0A) { // EOL
+                return true;
+            }
+        }
+        return false;
     }
 }
