@@ -1,0 +1,36 @@
+.register-page {
+    background-color: white;
+}
+
+.register-form {
+    margin-top: 250px;
+}
+
+a {
+    font-size: 12px !important;
+}
+dropdown-menu {
+    font-size: 12px !important;
+    margin-bottom: 10px !important;
+}
+label {
+    font-size: 12px !important;
+}
+button {
+    font-size: 12px !important;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+.col-md-offset {
+    margin-left: 100px;
+}
+
+button {
+    margin-bottom: 30px !important;
+}

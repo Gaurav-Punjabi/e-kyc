@@ -1,0 +1,44 @@
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.address-label {
+    font-size: 16px;
+    font-weight: 600;
+}
+.address {
+    font-size: 16px;
+}
+
+.addresses {
+    margin-bottom: 30px;
+}
+
+.row {
+    text-align: center;
+}
+
+.name {
+    margin-bottom: 30px;
+}
+
+.documents {
+    margin-bottom: 40px;
+}
+
+.document {
+    background: #fafafa;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.document label {
+    margin-right: 20px;
+    font-size: 16px;
+}
