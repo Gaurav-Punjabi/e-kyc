@@ -24,7 +24,7 @@ class TokenCRUD(serializers.Serializer):
             raise SuspiciousOperation("Cant update this token")
 
         currentToken.token_info().delete()
-        currentToken.token =hashlib.sha256(user_id+current_milli_time+consumer+hash(perms))
+        currentToken.token =hashlib.sha256(str(user_id+current_milli_time+consumer+hash(perms))).hexdigest()
         self.createTokenPerms(currentToken, perms)
         currentToken.save()
         return currentToken
@@ -38,7 +38,7 @@ class TokenCRUD(serializers.Serializer):
         consumer = validated_data.get("consumer")
         user_id = validated_data.get("user_id")
 
-        currentToken = Token.objects.create(user_id=user_id, consumer=consumer, token=hashlib.sha256(user_id+current_milli_time+consumer+hash(perms)))
+        currentToken = Token.objects.create(user_id=user_id, consumer=consumer, token=hashlib.sha256(str(user_id+current_milli_time+consumer+hash(perms))).hexdigest())
 
         self.createTokenPerms(currentToken, perms)
         currentToken.save()
@@ -48,6 +48,8 @@ class TokenCRUD(serializers.Serializer):
     def createTokenPerms(currentToken, perms):
         for perm in perms:
             TokenPermissions.objects.create(token=currentToken, perm_val=perm).save()
+
+
 
 
 
