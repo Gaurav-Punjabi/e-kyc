@@ -1,4 +1,4 @@
-package org.hackathon.distributedfs.distributedFs.model;
+package org.hackathon.distributedfs.distributedFs.model.entity;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ public class File  extends BaseModel{
     private Long id;
 
     @Column(name = "file_name")
-    private String url;
+    private String name;
 
     @Column(name = "file_size")
     private Long sie;
@@ -24,12 +24,12 @@ public class File  extends BaseModel{
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
+    public String getName() {
+        return name;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getSie() {

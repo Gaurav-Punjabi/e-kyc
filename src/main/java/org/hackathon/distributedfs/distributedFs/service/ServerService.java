@@ -1,6 +1,6 @@
 package org.hackathon.distributedfs.distributedFs.service;
 
-import org.hackathon.distributedfs.distributedFs.model.Server;
+import org.hackathon.distributedfs.distributedFs.model.entity.Server;
 import org.hackathon.distributedfs.distributedFs.repository.ServerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +23,4 @@ public class ServerService {
         serverRepository.findAll().forEach(server -> list.add(server));
         return list;
     }
-
 }

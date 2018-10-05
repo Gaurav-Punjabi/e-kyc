@@ -1,4 +1,4 @@
-package org.hackathon.distributedfs.distributedFs.model;
+package org.hackathon.distributedfs.distributedFs.model.entity;
 
 import javax.persistence.*;
 
