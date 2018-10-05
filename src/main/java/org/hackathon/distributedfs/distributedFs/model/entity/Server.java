@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "servers")
 public class Server extends BaseModel{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "server_id")
     private Long id;
 

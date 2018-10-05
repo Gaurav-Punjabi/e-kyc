@@ -3,6 +3,7 @@ package org.hackathon.distributedfs.distributedFs;
 import org.hackathon.distributedfs.distributedFs.model.FileFragment;
 import org.hackathon.distributedfs.distributedFs.model.entity.Server;
 import org.hackathon.distributedfs.distributedFs.service.FileDeliveryService;
+import org.hackathon.distributedfs.distributedFs.service.FileService;
 import org.hackathon.distributedfs.distributedFs.service.FileSplitter;
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,7 +27,8 @@ public class DistributedFsApplicationTests {
 
 	@Autowired
 	FileSplitter fileSplitter;
-
+	@Autowired
+	private FileService fileService;
 	@Autowired
 	FileDeliveryService fileDeliveryService;
 	@Autowired
@@ -84,4 +86,19 @@ public class DistributedFsApplicationTests {
 			System.out.println(fragments.get(i).getContent());
 		}
 	}
+
+	@Test
+	public void shouldReturnNotNullId_FileService(){
+		fileService.save("Demo",(long)100);
+	}
+
+	@Test public void checkByte(){
+	    byte[] arr = {65,66,67};
+	    String str = new String(arr);
+	    byte[] op = str.getBytes();
+	    System.out.println("op.length = "+op.length);
+	    for(int i = 0;i<op.length;i++){
+	        System.out.println(op[i]);
+        }
+    }
 }

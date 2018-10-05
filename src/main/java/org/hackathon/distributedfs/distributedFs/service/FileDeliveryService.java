@@ -19,13 +19,16 @@ public class FileDeliveryService {
     private FilePartService filePartService;
 
     /*this service is responsible for delivering the parts of file to different servers */
-    public void deliverFiles(File file,ArrayList<FileFragment> fragments, List<Server> servers) throws Exception{
+    public void deliverFiles(File file,List<FileFragment> fragments, List<Server> servers) throws Exception{
         for (int i = 0;i<fragments.size();i++){
             Server destinationServer = servers.get(i%servers.size());
             String destinationUrl = destinationServer.getUrl();
             //destinationUrl = "http://localhost:8080/receiveFragment";
-            System.out.println("content = "+fragments.get(i).getContent());
-            while(performPost.post(destinationUrl,fragments.get(i).getContent()) != 200);
+            //System.out.println("content = "+fragments.get(i).getContent());
+            //while(performPost.post(destinationUrl,fragments.get(i).getContent()) != 200);
+            System.out.println("before performing delivery");
+            performPost.post(destinationUrl,file.getId()+"-"+i,fragments.get(i).getContent());
+            System.out.println("after performing delivery");
             /*code to add entry to database */
             filePartService.add((long)fragments.get(i).getContent().length(),destinationServer,file);
         }

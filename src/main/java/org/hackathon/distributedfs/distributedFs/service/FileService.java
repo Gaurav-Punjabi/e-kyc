@@ -10,10 +10,20 @@ public class FileService {
     @Autowired
     private FileRepository fileRepository;
 
+    public File findById(Long id){
+        return fileRepository.findById(id).orElse(null);
+    }
     public void add(String name,Long size){
         File file = new File();
         file.setName(name);
         file.setSie(size);
         fileRepository.save(file);
+    }
+    public File save(String name,Long size){
+        File file = new File();
+        file.setSie(size);
+        file.setName(name);
+        fileRepository.save(file);
+        return file;
     }
 }

@@ -23,4 +23,8 @@ public class ServerService {
         serverRepository.findAll().forEach(server -> list.add(server));
         return list;
     }
+
+    public long getCount(){
+        return serverRepository.count();
+    }
 }

@@ -15,7 +15,9 @@ public class FileSplitter {
 
     public List<FileFragment> split(String content,int count) throws Exception{
         List<FileFragment> fragments = new LinkedList<>();
+        System.out.println("content length = "+content.length());
         int partitionSize = content.length()/count;
+        System.out.println("partition size = "+partitionSize);
         boolean flag = false;
         if(content.length()%count != 0){
             flag = true;

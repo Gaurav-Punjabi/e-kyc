@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "files")
 public class File  extends BaseModel{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "file_id")
     private Long id;
 
