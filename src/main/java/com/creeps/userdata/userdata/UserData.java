@@ -1,5 +1,6 @@
 package com.creeps.userdata.userdata;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -8,6 +9,9 @@ import java.util.Set;
 
 @Entity
 public class UserData {
+
+    private final static String PATH = RemoteCaller.FILE_SERVER_URL+"merge/";
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,17 +24,20 @@ public class UserData {
     private String phone;
 
     private String gender;
-
+    @JsonIgnore
     private Long aadharFileId;
+    @JsonIgnore
     private Long licenseFileId;
+    @JsonIgnore
     private Long panFileId;
 
     @Column(columnDefinition = "default false")
     private Boolean isDataVerified;
 
+    private String aadharURL;
+    private String licenseURL;
+    private String panURL;
 
-
-    @Column(unique = true, nullable = false)
     private String username;
     @Column(nullable = false)
     private String password;
@@ -140,5 +147,30 @@ public class UserData {
 
     public void setDataVerified(Boolean dataVerified) {
         isDataVerified = dataVerified;
+    }
+
+
+    public String getAadharURL() {
+        return aadharURL;
+    }
+
+    public void setAadharURL() {
+        this.aadharURL = PATH + this.aadharFileId;
+    }
+
+    public String getLicenseURL() {
+        return licenseURL;
+    }
+
+    public void setLicenseURL() {
+        this.licenseURL = PATH + this.licenseFileId;
+    }
+
+    public String getPanURL() {
+        return panURL;
+    }
+
+    public void setPanURL() {
+        this.panURL = PATH+this.panFileId;
     }
 }
