@@ -1,5 +1,7 @@
 package com.creeps.userdata.userdata;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -10,18 +12,22 @@ public class UserData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     private String firstName;
     private String lastName;
     private String address1;
     private String address2;
     private String phone;
 
-    private Date dob;
     private String gender;
 
     private Long aadharFileId;
     private Long licenseFileId;
     private Long panFileId;
+
+    @Column(columnDefinition = "default false")
+    private Boolean isDataVerified;
+
 
 
     @Column(unique = true, nullable = false)
@@ -116,5 +122,23 @@ public class UserData {
 
     public void setPanFileId(Long panFileId) {
         this.panFileId = panFileId;
+    }
+
+
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Boolean getDataVerified() {
+        return isDataVerified;
+    }
+
+    public void setDataVerified(Boolean dataVerified) {
+        isDataVerified = dataVerified;
     }
 }
