@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 public class UserData {
 
-    private final static String PATH = RemoteCaller.FILE_SERVER_URL+"merge/";
+    private final static String PATH = RemoteCaller.FILE_SERVER_URL+"distributed/v1/merge/";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -3,10 +3,13 @@ package com.creeps.userdata.userdata;
 import com.creeps.userdata.otps.OtpService;
 import com.sun.org.apache.xpath.internal.operations.Mult;
 import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
+import jdk.nashorn.internal.parser.Token;
 import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -110,11 +113,15 @@ public class UserDataController {
 
 
     @GetMapping("verify-otp/{otp}/{session-id}/{user-id}/")
-    public ResponseEntity verifyOtp(@PathVariable("otp") String otp, @PathVariable("session-id") String sessionId,
+    public ResponseEntity verifyOtp(@Nullable @PathVariable("otp") String otp, @Nullable @PathVariable("session-id") String sessionId,
                                     @PathVariable("user-id") Long userId){
         try {
             if (this.otpService.verifyOtp(otp, sessionId)) {
                 UserData data = this.repo.findById(userId).orElseThrow(() -> new Exception("Cant"));
+            data.setAadharURL();
+            data.setLicenseURL();
+            data.setPanURL();
+            this.repo.save(data);
                 return ResponseEntity.status(200).body(data);
             }
         }catch (Exception e){
@@ -124,6 +131,8 @@ public class UserDataController {
 
         return ResponseEntity.status(403).build();
     }
+
+
 
 
 
@@ -175,17 +184,16 @@ public class UserDataController {
         return ResponseEntity.status(200).body(this.caller.verifyToken(token));
     }
 */
-/*
-    @RequestMapping(name="user/verified/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Boolean> verifyToken(@PathVariable("id") Long id){
+    @GetMapping(name="user/{id}")
+    public ResponseEntity<?> getUserInfo(@PathVariable("id") Long id){
         UserData data= null;
         try {
             data = this.repo.findById(id).orElseThrow(() -> new Exception("Cant obtain resource"));
-            return ResponseEntity.status(200).body(data.getDataVerified());
+            return ResponseEntity.status(200).body(data);
         }catch (Exception e){
             return ResponseEntity.status(404).build();
         }
-    }*/
+    }
 
 
 
