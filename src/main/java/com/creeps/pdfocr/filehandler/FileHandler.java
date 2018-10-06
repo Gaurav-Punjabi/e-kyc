@@ -21,7 +21,7 @@ public class FileHandler {
         try{
             byte[] bytes = file.getBytes();
             String rootPath = System.getProperty("catalina.home");
-            File tempDir = new File(rootPath+ File.separator+"tmpFiles");
+            File tempDir = new File(rootPath+ System.currentTimeMillis()+File.separator+"tmpFiles.pdf");
             if(!tempDir.exists()) {
                 tempDir.mkdirs();
                 logger.log(TAG, "CREATED DIR");

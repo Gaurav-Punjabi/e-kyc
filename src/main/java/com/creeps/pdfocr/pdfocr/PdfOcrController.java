@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-@RequestMapping("api/vi/pdfocr")
+@RequestMapping("api/v1/pdfocr")
 @RestController
 public class PdfOcrController {
     private final static String TAG = "PdfOcrController";
@@ -50,6 +50,7 @@ public class PdfOcrController {
                 // todo sending remote call to ocr.space
 
                 String response = this.remoteCaller.getOCRData(OCR_URL, OCR_SPACE_API_KEY, file);
+                System.out.println(response);
                 return ResponseEntity.status(HttpStatus.OK).body(response);
 
             }
