@@ -56,7 +56,7 @@ public class UserDataController {
         data.setPhone(phone);
         data.setGender(gender);
 
-        File temp = new File("/home/rohan/Documents/creeps/userdata/temp"+System.currentTimeMillis()), temp2=new File("/home/rohan/Documents/creeps/userdata/temp2"+System.currentTimeMillis()), temp3=new File("/home/rohan/Documents/creeps/userdata/temp3"+System.currentTimeMillis());
+        File temp = new File("/home/rohan/Documents/creeps/userdata/temp"+System.currentTimeMillis()+".pdf"), temp2=new File("/home/rohan/Documents/creeps/userdata/temp2"+System.currentTimeMillis()+".pdf"), temp3=new File("/home/rohan/Documents/creeps/userdata/temp3"+System.currentTimeMillis()+".pdf");
         try {
             aadhar.transferTo(temp);
             pan.transferTo(temp2);
@@ -77,7 +77,9 @@ public class UserDataController {
         //validating first and last name
         try {
             String arr[];
-            if((arr=this.parseJson(this.caller.sendToRahulsServer(temp, "http://localhost:8099/api/v1/pdfocr/uploadfile/")))!=null) {
+            String resp = this.caller.sendToRahulsServer(temp, "http://localhost:8099/api/v1/pdfocr/uploadfile/");
+            System.out.println(resp);
+            if((arr=this.parseJson(resp))!=null) {
                 if(data.getFirstName().equalsIgnoreCase(arr[0]) && data.getLastName().equalsIgnoreCase(arr[1])) {
                     data.setAadharURL();
                     data.setLicenseURL();
@@ -116,20 +118,20 @@ public class UserDataController {
     public ResponseEntity verifyOtp(@Nullable @PathVariable("otp") String otp, @Nullable @PathVariable("session-id") String sessionId,
                                     @PathVariable("user-id") Long userId){
         try {
-            if (this.otpService.verifyOtp(otp, sessionId)) {
+            //if (this.otpService.verifyOtp(otp, sessionId)) {
                 UserData data = this.repo.findById(userId).orElseThrow(() -> new Exception("Cant"));
             data.setAadharURL();
             data.setLicenseURL();
             data.setPanURL();
             this.repo.save(data);
                 return ResponseEntity.status(200).body(data);
-            }
+            //}
         }catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.status(403).build();
         }
 
-        return ResponseEntity.status(403).build();
+        //return ResponseEntity.status(403).build();
     }
 
 

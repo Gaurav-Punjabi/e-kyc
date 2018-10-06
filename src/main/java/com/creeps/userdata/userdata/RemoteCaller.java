@@ -12,6 +12,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class RemoteCaller {
@@ -246,11 +247,15 @@ public class RemoteCaller {
 
 
     public String sendToRahulsServer(File file, String url){
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client ;
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.readTimeout(100000, TimeUnit.MILLISECONDS);
+        builder.writeTimeout(100000, TimeUnit.MILLISECONDS);
+        client = builder.build();
         RequestBody formBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("file", file.getName(),
-                        RequestBody.create(MediaType.parse("text/plain"), file))
+                        RequestBody.create(MediaType.parse("text/pdf"), file))
                 .build();
         Request request = new Request.Builder().url(url).post(formBody).build();
         try {
