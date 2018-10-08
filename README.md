@@ -6,7 +6,7 @@ To register the users on our portal and verify the user as authentic to the requ
 The supreme court barred certain provisions of the Aadhaar Act – throwing into disarray several business models that rely on Aadhaar-based biometric authentication.  Addressing the concern on data privacy, the latest ruling makes linking of the identification card with private services illegal. This means that the companies that use Aadhaar based e-Know Your Customer (KYC) to acquire new customers, will now have to make changes to how they onboard and verify customers.
 
 2. Proposed System
-* The participants on our system would be the users and the requesting authorities or 3rd party application.
+&nbsp;* The participants on our system would be the users and the requesting authorities or 3rd party application.
     
 * Our portal will allow the user to register by uploading 2 government identification that include but are not restricted to Aadhaar Card, Driving License and PAN Card. A user profile would be created that will be split into multiple files and stored on various servers. The purpose of this is that the risk of data being leaked from us would be reduced drastically as even if one server gets compromised, it would not lead to the hacker getting all the data but just a part of it. 
     
