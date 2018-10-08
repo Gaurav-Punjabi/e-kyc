@@ -28,6 +28,6 @@ To register the users on our portal and verify the user as authentic to the requ
 4. Verified page
 ![Screenshot](screenshots/verified-page.png)
 
-5. Login Page
+5. Profile Page
 ![Screenshot](screenshots/profile-page.png)
 
