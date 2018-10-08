@@ -16,18 +16,28 @@ To register the users on our portal and verify the user as authentic to the requ
     ![Screenshot](diagrams/diagram-3.png)
 ### Screenshots
 
+
 1. Login Page
+
 ![Screenshot](screenshots/login-page.png)
 
+
 2. Registration Page
+
 ![Screenshot](screenshots/register-page.png)
 
+
 3. Verification Page
+
 ![Screenshot](screenshots/verification-page.png)
 
+
 4. Verified page
+
 ![Screenshot](screenshots/verified-page.png)
 
+
 5. Profile Page
+
 ![Screenshot](screenshots/profile-page.png)
 
