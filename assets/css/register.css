@@ -3,7 +3,7 @@
 }
 
 .register-form {
-    margin-top: 250px;
+    margin-top: 1w50px;
 }
 
 a {
@@ -33,4 +33,15 @@ input[type=file] {
 
 button {
     margin-bottom: 30px !important;
+}
+
+#camera {
+    width: 320px;
+    height: 240px;
+    margin-left: 400px;
+    margin-bottom: 40px;
+}
+
+#capture-button {
+    margin-left: 500px;
 }

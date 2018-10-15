@@ -1,0 +1,26 @@
+#recognition-image {
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 90px;
+}
+
+.verification-page {
+    background-color: #fff;
+    margin-top: 100px;
+}
+
+.page-title {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+
+
+.row {
+    text-align: center;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}

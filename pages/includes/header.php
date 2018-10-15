@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+<nav class="navbar fixed-top navbar-dark bg-primary navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" id="app-name" href="https://demos.creative-tim.com/material-kit/index.html">

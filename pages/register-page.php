@@ -1,3 +1,6 @@
+
+<?php header('Access-Control-Allow-Origin: *'); ?>    
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +9,7 @@
 ?>
 <link rel="stylesheet" href="../assets/css/register.css">
 
-<body class="register-page sidebar-collapse">
+<body class="registration-page sidebar-collapse">
 
     <?php
         require_once("includes/header.php");
@@ -16,19 +19,22 @@
         <div class="container register-form">
             <div class="row">
                 <div class="col-md-offset col-md-10">
-                    <form action="" method="POST" role="form">
+                    <div class="title" style="text-align: center; color: #333; margin-bottom: 50px">
+                        <h2>User Registration : </h2>
+                    </div>
+                    <form action="http://192.168.43.52:8082/api/v1/userdata/create/" id="myForm" method="POST" role="form" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="first-name">First Name : </label>
-                                    <input type="text" class="form-control" name="first-name" id="first-name" placeholder="Enter Your First Name">
+                                    <input type="text" class="form-control" name="firstName" id="first-name" placeholder="Enter Your First Name">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="last-name">Last Name : </label>
-                                    <input type="text" class="form-control" name="last-name" id="last-name" placeholder="Enter Your Last Name">
+                                    <input type="text" class="form-control" name="lastName" id="last-name" placeholder="Enter Your Last Name">
                                 </div>
                             </div>
                         </div>
@@ -37,7 +43,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="address-1">Address 1 : </label>
-                                    <input type="text" class="form-control" name="address-1" id="address-1" placeholder="Enter the first line of your address">
+                                    <input type="text" class="form-control" name="address1" id="address-1" placeholder="Enter the first line of your address">
                                 </div>
                             </div>
                         </div>
@@ -46,7 +52,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="address-2">Address 2 : </label>
-                                    <input type="text" class="form-control" name="address-2" id="address-2" placeholder="Enter the second line of your address">
+                                    <input type="text" class="form-control" name="address2" id="address-2" placeholder="Enter the second line of your address">
                                 </div>
                             </div>
                         </div>
@@ -54,47 +60,41 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="age"> Age : </label>
-                                    <input type="text" class="form-control" name="age" id="age" placeholder="Enter Your Age">
+                                    <label for="phone"> Phone Number : </label>
+                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter Your Phone No : ">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="last-name">Gender : </label>
-                                    <input type="text" class="form-control" name="last-name" id="last-name" placeholder="Enter Your Gender">
+                                    <label for="gender">Gender : </label>
+                                    <input type="text" class="form-control" name="gender" id="gender" placeholder="Enter Your Gender">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row file">
                             <div class="col-md-4">
-                                <label for="aadhar-file"> Upload a copy of your Pan Card : </label>
-                                <label for="aadhar-file" class="btn btn-primary choose-file col-md-6">Upload File</label>
-                                <input type="file" class="form-control-file" id="aadhar-file">
+                                <label for="pan-card"> Upload a copy of your Pan Card : </label>
+                                <label for="pan-card" class="btn btn-primary choose-file col-md-6">Upload File</label>
+                                <input type="file" class="form-control-file" id="pan-card" name="pan">
                             </div>
                             <div class="col-md-4">
                                 <label for="aadhar-file"> Upload a copy of your Aadhar Card : </label>
                                 <label for="aadhar-file" class="btn btn-primary choose-file">Upload File</label>
-                                <input type="file" class="form-control-file" id="aadhar-file">
+                                <input type="file" class="form-control-file" id="aadhar-file" name="aadhar">
                             </div>
 
                             <div class="col-md-4">
-                                <label for="aadhar-file"> Upload a copy of your Drivers Lisence : </label>
-                                <label for="aadhar-file" class="btn btn-primary choose-file">Upload File</label>
-                                <input type="file" class="form-control-file" id="aadhar-file">
+                                <label for="drivers-license"> Upload a copy of your Drivers Lisence : </label>
+                                <label for="drivers-license" class="btn btn-primary choose-file">Upload File</label>
+                                <input type="file" class="form-control-file" id="drivers-license" name="license">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-default">Take A Selfie</button>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary col-md-12">Submit</button>
+                                <button type="submit" id="submit-button" class="btn btn-primary col-md-12">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -117,6 +117,8 @@
     <script src="../assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+    
+    <script src="../assets/js/register-response.js"></script>
 </body>
 
 </html>

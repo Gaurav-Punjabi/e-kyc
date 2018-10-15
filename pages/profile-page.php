@@ -5,6 +5,16 @@
     require_once("includes/head.php")
 ?>
 
+<?php
+    $name = $_GET['name'];  
+    $address1 = $_GET['address1'];
+    $address2 = $_GET['address2'];
+    $aadhar = $_GET['aadhar'];
+    $pan = $_GET['pan'];
+    $license = $_GET['license'];
+
+?>
+    
 <link rel="stylesheet" href="../assets/css/profile-demo.css">
 <link rel="stylesheet" href="../assets/css/profile.css">
 
@@ -25,7 +35,7 @@
                                 <img src="../assets/img/faces/christian.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
-                                <h3 class="title">Christian Louboutin</h3>
+                                <h3 class="title"><?php echo $name; ?></h3>
                                 <h6>Designer</h6>
                             </div>
                         </div>
@@ -36,35 +46,60 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label class="text-weight-bold address-label">Address 1 : </label>
-                            <label class="text-weight-bold address">703 A-Wing, Darshan Tower</label>
+                            <label class="text-weight-bold address"><?php echo $address1;?></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label class="text-weight-bold address-label">Address 2 : </label>
-                            <label class="text-weight-bold address">Ambedkard Road, Thane(W) - 400601</label>
+                            <label class="text-weight-bold address"><?php echo $address2; ?></label>
                         </div>
                     </div>
                 </div>
 
                 <div class="documents">
+<!--
                        <?php
-                            $label = ["Aadhar Card", "Driver's License", "PAN Card"];
-                            for($i=0;$i<sizeof($label);$i++) {
-                        ?>
+                               ?>
                         <div class="document">
                            <div class="row">
                             <div class="col-md-12">
                                 <label for="c">
-                                    <?php echo $label[$i] ?></label>
-                                <button class="btn btn-primary">View Document</button>
+                                    Document</a>
                             </div>
                         </div>
                     </div>
                     <?php
-                        }
+                        
                     ?>
-                </div>
+-->
+                    
+                    <div class="document">
+                           <div class="row">
+                            <div class="col-md-12">
+                                <label for="c"> AAdhar </label>
+                                <a href = '<?php echo $aadhar; ?>' target='_blank' class="btn btn-primary">View Document</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                                        <div class="document">
+                           <div class="row">
+                            <div class="col-md-12">
+                                <label for="c"> Pancard </label>
+                                <a href = '<?php echo $pan; ?>' target='_blank' class="btn btn-primary">View Document</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                                        <div class="document">
+                           <div class="row">
+                            <div class="col-md-12">
+                                <label for="c"> License </label>
+                                <a href = '<?php echo $license; ?>' target='_blank' class="btn btn-primary">View Document</a>
+                            </div>
+                        </div>
+                    </div>
                 
                 <div class="clearfix"></div>
             </div>
